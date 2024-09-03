@@ -9,7 +9,7 @@ import EditLocationAltIcon from "@mui/icons-material/EditLocationAlt";
 import EmailIcon from "@mui/icons-material/Email";
 const Footer = () => {
   return (
-    <div className="flex flex-col md:flex-row justify-between bg-white p-5 md:p-24">
+    <div className="flex flex-col md:flex-row justify-between bg-white p-5 md:p-10">
       <div className="flex flex-col gap-4 w-full md:w-1/2">
         <img src={logoImage} alt="" className="w-[55px]" />
         <h1 className="pFont pText text-2xl">Espresso Emporium</h1>

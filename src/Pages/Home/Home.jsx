@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import User from "./User";
 import Banner from "../Banner/Banner";
 import ExistCoffee from "../ExistCoffee/ExistCoffee";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Home = () => {
+  const { baseUrl } = useContext(AuthContext);
   const [check, setcheck] = useState(true);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch(`${baseUrl}/users`)
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, [check]);

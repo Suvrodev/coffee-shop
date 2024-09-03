@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const image_Hosting_Token = import.meta.env.VITE_IMAGE_TOKEN;
 const AddCoffee = () => {
+  const { baseUrl } = useContext(AuthContext);
   console.log("Token: ", image_Hosting_Token);
   const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${image_Hosting_Token}`;
 
@@ -47,7 +49,7 @@ const AddCoffee = () => {
           };
 
           ////Add Coffee Start
-          fetch("http://localhost:5000/coffee", {
+          fetch(`${baseUrl}/coffee`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -78,12 +80,12 @@ const AddCoffee = () => {
           <FaArrowLeft /> Back to Home
         </h1>
       </Link>
-      <div className="bg-[#F4F3F0] w-10/12 mx-auto rounded-xl p-5">
+      <div className="bg-[#F4F3F0] w-full md:w-10/12 mx-auto rounded-xl p-5">
         <h1 className="pText pFont text-2xl text-center p-2 font-bold rounded-md">
           Add New Coffee
         </h1>
 
-        <p className="text-black text-center my-2 w-10/12 opacity-75">
+        <p className="text-black text-center my-2 w-10/12 mx-auto opacity-75">
           It is a long established fact that a reader will be distraceted by the
           readable content of a page when looking at its layout. The point of
           using Lorem Ipsum is that it has a more-or-less normal distribution of

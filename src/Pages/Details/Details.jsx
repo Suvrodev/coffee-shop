@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Details = () => {
+  const { baseUrl } = useContext(AuthContext);
   const { id } = useParams();
   const [coffee, setCoffee] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/coffee/${id}`)
+    fetch(`${baseUrl}/coffee/${id}`)
       .then((res) => res.json())
       .then((data) => setCoffee(data));
   }, []);
@@ -29,7 +31,7 @@ const Details = () => {
         <div className="w-full md:w-1/2">
           <img src={image} alt="" className="w-[450px] h-auto" />
         </div>
-        <div className="w-full md:w-1/2 flex items-start justify-center flex-col">
+        <div className="w-full md:w-1/2 flex items-center md:items-start  justify-center flex-col">
           <h1 className="text-xl pFont pText">{name}</h1>
           <h1>
             <span className="font-bold pText">Name: </span>{" "}

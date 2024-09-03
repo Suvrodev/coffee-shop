@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Coffee from "../coffee/Coffee";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const ExistCoffee = () => {
+  const { baseUrl } = useContext(AuthContext);
   const [check, setCheck] = useState(true);
   const [coffees, setCoffees] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/coffee")
+    fetch(`${baseUrl}/coffee`)
       .then((res) => res.json())
       .then((data) => setCoffees(data));
   }, [check]);
@@ -25,7 +27,7 @@ const ExistCoffee = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         ///Delete Start
-        fetch(`http://localhost:5000/coffee/${_id}`, {
+        fetch(`${baseUrl}/coffee/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -58,7 +60,7 @@ const ExistCoffee = () => {
         </Link>
       </div>
 
-      <div className="grid grid-cols-2 gap-10 bg-gray-500 p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-gray-500 p-4">
         {coffees.map((coffee) => (
           <Coffee
             key={coffee._id}

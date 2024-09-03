@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./UpdateCoffee.css";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const image_Hosting_Token = import.meta.env.VITE_IMAGE_TOKEN;
 const UpdateCoffee = () => {
+  const { baseUrl } = useContext(AuthContext);
   const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${image_Hosting_Token}`;
   //console.log("Image Hosting URL: ",imageHostingUrl);
   const { id } = useParams();
   const [coffee, setCoffee] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/coffee/${id}`)
+    fetch(`${baseUrl}/coffee/${id}`)
       .then((res) => res.json())
       .then((data) => setCoffee(data));
   }, []);
@@ -51,7 +53,7 @@ const UpdateCoffee = () => {
       console.log(updateCoffee);
 
       ////Update Coffee Start
-      fetch(`http://localhost:5000/coffee/${id}`, {
+      fetch(`${baseUrl}/coffee/${id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
@@ -98,7 +100,7 @@ const UpdateCoffee = () => {
           };
 
           ////Update Coffee Start
-          fetch(`http://localhost:5000/coffee/${id}`, {
+          fetch(`${baseUrl}/coffee/${id}`, {
             method: "PATCH",
             headers: {
               "content-type": "application/json",
@@ -141,12 +143,12 @@ const UpdateCoffee = () => {
           <FaArrowLeft /> Back to Home
         </h1>
       </Link>
-      <div className="bg-[#F4F3F0] w-10/12 mx-auto rounded-xl p-5">
+      <div className="bg-[#F4F3F0] w-full md:w-10/12 mx-auto rounded-xl p-5">
         <h1 className="pText pFont text-2xl text-center p-2 font-bold rounded-md">
           Update Existing Coffee Details
         </h1>
 
-        <p className="text-black text-center my-2 w-10/12 opacity-75">
+        <p className="text-black text-center my-2 w-full md:w-10/12 mx-auto opacity-75">
           It is a long established fact that a reader will be distraceted by the
           readable content of a page when looking at its layout. The point of
           using Lorem Ipsum is that it has a more-or-less normal distribution of
@@ -158,7 +160,7 @@ const UpdateCoffee = () => {
         </div>
 
         <form onSubmit={handleUpdateCoffee} className="p-5">
-          <div className="flex justify-between">
+          <div className="flex flex-col md:flex-row justify-between">
             <div className="form-control w-full max-w-xs ">
               <label className="label">
                 <span className="label-text text-black font-bold">
