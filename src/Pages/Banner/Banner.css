@@ -1,0 +1,11 @@
+.banner {
+  background: url("../../../src/assets/Banner.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 400px;
+  margin: 0 auto;
+}
