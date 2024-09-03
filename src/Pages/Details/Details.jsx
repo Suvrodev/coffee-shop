@@ -1,78 +1,65 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
+import { Link, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Details = () => {
   const { id } = useParams();
-  const [user, setUser] = useState("");
-  useEffect(() => {
-    fetch(`http://localhost:5000/users/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data) {
-          setUser(data);
-        }
-      });
-  }, []);
+  const [coffee, setCoffee] = useState("");
 
-  const {_id,name,email}=user;
-//   console.log("Kuchupu: ",_id);
-  
-  
-  const handleUpdateUser=(event)=>{
-    event.preventDefault()
-    const Form=event.target;
-    const name=Form.name.value;
-    const email=Form.email.value;
-    const user={name,email}
-    fetch(`http://localhost:5000/user/${_id}`,{
-        method: 'PUT',
-        headers: {
-            'content-type' : 'application/json'
-        },
-        body: JSON.stringify(user)
-    })
-    .then(res=>res.json())
-    .then(data=>{
-        if(data.modifiedCount>0){
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Updated Successfully',
-                showConfirmButton: false,
-                timer: 1500
-              })
-        }
-    })
-  }
+  useEffect(() => {
+    fetch(`http://localhost:5000/coffee/${id}`)
+      .then((res) => res.json())
+      .then((data) => setCoffee(data));
+  }, []);
+  console.log(coffee);
+  const { category, chef, detail, image, name, price, suplier, taste, _id } =
+    coffee;
+
   return (
-    <div>
-      <div className="bg-gray-400 w-8/12 mx-auto p-5 rounded-md">
-        <h1 className="bg-green-600 text-center p-2 rounded-md font-bold">
-          Update
+    <div className="bg-white p-0 md:p-10">
+      <Link to={"/"}>
+        <h1 className="text-black mb-5 flex items-center gap-2 cursor-pointer">
+          {" "}
+          <FaArrowLeft /> Back to Home
         </h1>
-        <p className="bg-orange-400 p-2 mt-2 rounded-md text-center">ID: {_id} </p>
-        <form onSubmit={handleUpdateUser}>
-          <input
-            className="m-4 rounded-md p-2 bg-white text-black"
-            type="text"
-            name="name"
-            id=""
-            placeholder="Name"
-            defaultValue={name}
-          />
-          <br />
-          <input
-            className="m-4 rounded-md p-2 bg-white text-black"
-            type="email"
-            name="email"
-            id=""
-            placeholder="Email"
-            defaultValue={email}
-          />
-          <br />
-          <input className="m-4 btn btn-primary" type="submit" value="Update" />
-        </form>
+      </Link>
+
+      <div className="flex flex-col md:flex-row gap-10">
+        <div className="w-full md:w-1/2">
+          <img src={image} alt="" className="w-[450px] h-auto" />
+        </div>
+        <div className="w-full md:w-1/2 flex items-start justify-center flex-col">
+          <h1 className="text-xl pFont pText">{name}</h1>
+          <h1>
+            <span className="font-bold pText">Name: </span>{" "}
+            <span className="text-black opacity-90">{name}</span>{" "}
+          </h1>
+          <h1>
+            <span className="font-bold pText">Chef: </span>{" "}
+            <span className="text-black opacity-90">{chef}</span>{" "}
+          </h1>
+          <h1>
+            <span className="font-bold pText">Supplier: </span>{" "}
+            <span className="text-black opacity-90">{suplier}</span>{" "}
+          </h1>
+          <h1>
+            <span className="font-bold pText">Taste: </span>{" "}
+            <span className="text-black opacity-90">{taste}</span>{" "}
+          </h1>
+          <h1>
+            <span className="font-bold pText">Category: </span>{" "}
+            <span className="text-black opacity-90">{category}</span>{" "}
+          </h1>
+          <h1>
+            <span className="font-bold pText">Price: </span>{" "}
+            <span className="text-black opacity-90">{price}</span>{" "}
+          </h1>
+          <h1>
+            <span className="font-bold pText">Detail: </span>{" "}
+            <span className="text-black opacity-90">{detail}</span>{" "}
+          </h1>
+        </div>
       </div>
     </div>
   );

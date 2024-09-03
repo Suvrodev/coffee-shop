@@ -9,8 +9,8 @@ import EditLocationAltIcon from "@mui/icons-material/EditLocationAlt";
 import EmailIcon from "@mui/icons-material/Email";
 const Footer = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 bg-white p-0 md:p-24">
-      <div className="flex flex-col gap-4">
+    <div className="flex flex-col md:flex-row justify-between bg-white p-5 md:p-24">
+      <div className="flex flex-col gap-4 w-full md:w-1/2">
         <img src={logoImage} alt="" className="w-[55px]" />
         <h1 className="pFont pText text-2xl">Espresso Emporium</h1>
         <p className="text-black opacity-90">
@@ -18,7 +18,7 @@ const Footer = () => {
           memorable moments, to share with your best companion.
         </p>
 
-        <div className="flex justify-start items-center gap-2 ">
+        <div className="flex justify-start items-center gap-2">
           <p className="w-[30px] h-[30px] flex items-center justify-center rounded-full bg-[#75787C">
             <FacebookIcon className="footerSocialIcon " />
           </p>
@@ -46,8 +46,10 @@ const Footer = () => {
           <p>Khulna, Bangladesh</p>
         </div>
       </div>
-      <div className="flex flex-col items-start gap-4 relative">
-        <h1 className="pFont pText text-2xl">Connect with Us</h1>
+      <div className=" w-full md:w-1/2  flex flex-col items-end gap-4 relative">
+        <div className="">
+          <h1 className="pFont pText text-2xl text-start">Connect with Us</h1>
+        </div>
         <input
           type="text"
           name=""

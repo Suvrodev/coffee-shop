@@ -71,7 +71,7 @@ const AddCoffee = () => {
     }
   };
   return (
-    <div className="bg-white p-10">
+    <div className="bg-white p-0 md:p-10">
       <Link to={"/"}>
         <h1 className="text-black mb-5 flex items-center gap-2 cursor-pointer pFont">
           {" "}
@@ -79,7 +79,7 @@ const AddCoffee = () => {
         </h1>
       </Link>
       <div className="bg-[#F4F3F0] w-10/12 mx-auto rounded-xl p-5">
-        <h1 className="text-black text-center p-2 font-bold rounded-md">
+        <h1 className="pText pFont text-2xl text-center p-2 font-bold rounded-md">
           Add New Coffee
         </h1>
 
@@ -89,8 +89,8 @@ const AddCoffee = () => {
           using Lorem Ipsum is that it has a more-or-less normal distribution of
           letters, as opposed to using Content here.
         </p>
-        <form onSubmit={handleAddCoffee} className="p-5">
-          <div className="flex justify-between">
+        <form onSubmit={handleAddCoffee} className="md:p-5">
+          <div className="flex flex-col md:flex-row justify-between">
             <div className="form-control w-full max-w-xs ">
               <label className="label">
                 <span className="label-text text-black font-bold">
@@ -101,7 +101,7 @@ const AddCoffee = () => {
                 type="text"
                 name="name"
                 placeholder="Coffee Name"
-                className="input input-bordered w-full max-w-xs bg-transparent pBorder border-2"
+                className="input input-bordered w-full max-w-xs bg-transparent pBorder border-2 pText "
               />
             </div>
 
@@ -113,7 +113,7 @@ const AddCoffee = () => {
                 type="text"
                 name="chef"
                 placeholder="Chef Name"
-                className="input input-bordered w-full max-w-xs bg-transparent pBorder border-2"
+                className="input input-bordered w-full max-w-xs bg-transparent pBorder border-2 pText"
               />
             </div>
           </div>
@@ -128,7 +128,7 @@ const AddCoffee = () => {
                 type="text"
                 name="suplier"
                 placeholder="Supplier"
-                className="input input-bordered w-full max-w-xs bg-transparent pBorder border-2"
+                className="input input-bordered w-full max-w-xs bg-transparent pBorder border-2 pText"
               />
             </div>
 
@@ -140,7 +140,7 @@ const AddCoffee = () => {
                 type="text"
                 name="taste"
                 placeholder="Teste"
-                className="input input-bordered w-full max-w-xs bg-transparent pBorder border-2"
+                className="input input-bordered w-full max-w-xs bg-transparent pBorder border-2 pText"
               />
             </div>
           </div>
@@ -155,7 +155,7 @@ const AddCoffee = () => {
                 type="text"
                 name="category"
                 placeholder="Category"
-                className="input input-bordered w-full max-w-xs bg-transparent pBorder border-2"
+                className="input input-bordered w-full max-w-xs bg-transparent pBorder border-2 pText"
               />
             </div>
 
@@ -167,7 +167,7 @@ const AddCoffee = () => {
                 type="text"
                 name="detail"
                 placeholder="Details"
-                className="input input-bordered w-full max-w-xs bg-transparent pBorder border-2"
+                className="input input-bordered w-full max-w-xs bg-transparent pBorder border-2 pText"
               />
             </div>
           </div>
@@ -181,7 +181,7 @@ const AddCoffee = () => {
                 type="number"
                 name="price"
                 placeholder="Price"
-                className="input input-bordered w-full max-w-xs bg-transparent pBorder border-2"
+                className="input input-bordered w-full max-w-xs bg-transparent pBorder border-2 pText"
               />
             </div>
           </div>
@@ -194,11 +194,11 @@ const AddCoffee = () => {
               <input
                 type="file"
                 name="photo"
-                className="file-input w-full bg-transparent pBorder border-2 "
+                className="file-input w-full bg-transparent pBorder border-2 pText "
               />
             </div>
           </div>
-          <div className=" mt-2">
+          <div className=" mt-6">
             <button className="py-3 rounded-xl pColor block w-full pColor pFont">
               Add Coffiee
             </button>
