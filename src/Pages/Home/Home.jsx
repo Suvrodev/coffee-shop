@@ -4,6 +4,7 @@ import User from "./User";
 import Banner from "../Banner/Banner";
 import ExistCoffee from "../ExistCoffee/ExistCoffee";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import AboutCoffee from "../AboutCoffee/AboutCoffee";
 
 const Home = () => {
   const { baseUrl } = useContext(AuthContext);
@@ -20,6 +21,7 @@ const Home = () => {
   return (
     <div className="bg-white">
       <Banner></Banner>
+      <AboutCoffee />
       <ExistCoffee></ExistCoffee>
     </div>
   );
